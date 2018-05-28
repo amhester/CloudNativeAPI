@@ -34,6 +34,6 @@ func main() {
 	mux.HandleFunc("/hello", hello)
 
 	// Start listening
-	fmt.Println("Sample API server listening on 127.0.0.1:8080")
-	http.ListenAndServe("127.0.0.1:8080", mux)
+	fmt.Println("Sample API server listening on 0.0.0.0:8080")
+	http.ListenAndServe("0.0.0.0:8080", mux)
 }
