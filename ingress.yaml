@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: default
+  name: sample-gke-api
+  labels:
+    apiVersion: v1
+    app: sample-gke-api
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /*
+          backend:
+            serviceName: api
+            servicePort: 80

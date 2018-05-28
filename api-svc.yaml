@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  name: api
+  labels:
+    name: api
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: probe
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    name: api
+  type: NodePort
