@@ -7,8 +7,15 @@ host: api.endpoints.sample-gke-api.cloud.goog
 schemes:
   - http
   - https
-x-google-allow: all
 paths:
+  /:
+    get:
+      summary: Health Check
+      operationId: healthCheck
+      description: Used to determine if API is healthy
+      responses:
+        200:
+          description: ok
   /hello:
     get:
       summary: Hello World
