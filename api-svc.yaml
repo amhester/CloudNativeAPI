@@ -11,6 +11,10 @@ spec:
     targetPort: 8080
     protocol: TCP
     name: http
+  - port: 8081
+    targetPort: 8081
+    protocol: TCP
+    name: probe
   selector:
     name: api
   type: NodePort

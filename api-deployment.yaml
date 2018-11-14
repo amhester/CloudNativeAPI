@@ -22,7 +22,11 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 8081
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8081
         resources:
           requests:
             cpu: 10m
@@ -31,5 +35,22 @@ spec:
             cpu: 40m
             memory: 128Mi
         ports:
-        - containerPort: 8080
+        - containerPort: 8081
           name: http
+      - image: gcr.io/endpoints-release/endpoints-runtime:1.5
+        name: esp
+        args: [
+          "-p", "8080",
+          "-a", "0.0.0.0:8081",
+          "-s", "api.endpoints.sample-gke-api.cloud.goog",
+          "-v", "<your-endpoints-service-deploy-id>",
+        ]
+        resources:
+          requests:
+            cpu: 20m
+            memory: 32Mi
+          limits:
+            cpu: 40m
+            memory: 64Mi
+        ports:
+          - containerPort: 8080
